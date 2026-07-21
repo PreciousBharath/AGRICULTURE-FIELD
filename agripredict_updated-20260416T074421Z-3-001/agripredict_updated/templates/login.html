@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — AgriPredict</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/agri.css') }}">
+</head>
+<body>
+
+  <div class="bg-canvas"></div>
+
+  <nav class="agri-nav">
+    <a href="{{ url_for('index') }}" class="nav-brand">
+      <div class="nav-brand-icon">🌾</div>
+      <span class="nav-brand-text">AgriPredict</span>
+    </a>
+    <div class="nav-links">
+      <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+      <a href="{{ url_for('predict') }}" class="nav-link">Predict</a>
+      <a href="{{ url_for('login') }}" class="nav-link active">Login</a>
+    </div>
+    <a href="{{ url_for('signup') }}" class="nav-btn">Create Account</a>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="agri-card fade-up" style="max-width: 460px;">
+
+      <div class="card-header-agri">
+        <div class="card-icon">🔐</div>
+        <h1 class="card-title">Welcome Back</h1>
+        <p class="card-subtitle">Sign in to access your AgriPredict dashboard</p>
+      </div>
+
+      <div class="agri-divider"></div>
+
+      {% if error %}
+      <div class="alert-agri">⚠️ {{ error }}</div>
+      {% endif %}
+
+      <form method="POST" action="{{ url_for('login') }}">
+
+        <div class="form-group">
+          <label class="form-label" for="email">📧 Email Address</label>
+          <div class="input-group">
+            <span class="input-icon">📧</span>
+            <input type="email" class="form-control" id="email" name="email"
+                   placeholder="you@example.com" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">🔑 Password</label>
+          <div class="input-group input-group-pass">
+            <span class="input-icon">🔑</span>
+            <input type="password" class="form-control" id="password" name="password"
+                   placeholder="Enter your password" style="padding-left: 2.5rem;" required>
+            <button type="button" class="pass-toggle" onclick="togglePassword('password', this)" title="Show/hide password">👁️</button>
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem;">
+          <label class="agri-check" style="margin: 0;">
+            <input type="checkbox" name="remember">
+            <span class="agri-check-label">Remember me</span>
+          </label>
+          <a href="#" style="font-size: 0.85rem; color: var(--leaf); text-decoration: none; font-weight: 600;">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn-agri-primary">
+          🌱 Sign In to AgriPredict
+        </button>
+
+      </form>
+
+      <div class="agri-divider"></div>
+
+      <!-- Social login hint -->
+      <div style="text-align: center; margin-bottom: 1rem;">
+        <span style="font-size: 0.82rem; color: var(--bark); opacity: 0.6; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 600;">or continue with</span>
+      </div>
+      <div style="display: flex; gap: 0.7rem; margin-bottom: 1.2rem;">
+        <button type="button" onclick="alert('Google login coming soon!')"
+                style="flex:1; padding: 0.6rem; background: white; border: 1.5px solid rgba(74,124,63,0.25); border-radius: 10px; cursor: pointer; font-size: 0.88rem; font-weight: 600; color: #3b2a1a; transition: all 0.2s;"
+                onmouseover="this.style.borderColor='rgba(74,124,63,0.5)'"
+                onmouseout="this.style.borderColor='rgba(74,124,63,0.25)'">
+          🔵 Google
+        </button>
+        <button type="button" onclick="alert('GitHub login coming soon!')"
+                style="flex:1; padding: 0.6rem; background: white; border: 1.5px solid rgba(74,124,63,0.25); border-radius: 10px; cursor: pointer; font-size: 0.88rem; font-weight: 600; color: #3b2a1a; transition: all 0.2s;"
+                onmouseover="this.style.borderColor='rgba(74,124,63,0.5)'"
+                onmouseout="this.style.borderColor='rgba(74,124,63,0.25)'">
+          ⚫ GitHub
+        </button>
+      </div>
+
+      <div class="auth-switch">
+        Don't have an account? <a href="{{ url_for('signup') }}">Sign up free →</a>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="agri-footer">
+    © 2026 AgriPredict — Secure Authentication · Your data stays private 🔒
+  </footer>
+
+  <script>
+    function togglePassword(fieldId, btn) {
+      const field = document.getElementById(fieldId);
+      if (field.type === 'password') {
+        field.type = 'text';
+        btn.textContent = '🙈';
+      } else {
+        field.type = 'password';
+        btn.textContent = '👁️';
+      }
+    }
+  </script>
+</body>
+</html>

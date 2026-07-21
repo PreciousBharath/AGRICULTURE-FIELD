@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgriPredict — Crop Production Intelligence</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/agri.css') }}">
+</head>
+<body>
+
+  <!-- Background -->
+  <div class="bg-canvas"></div>
+
+  <!-- Navbar -->
+  <nav class="agri-nav">
+    <a href="{{ url_for('index') }}" class="nav-brand">
+      <div class="nav-brand-icon">🌾</div>
+      <span class="nav-brand-text">AgriPredict</span>
+    </a>
+    <div class="nav-links">
+      <a href="{{ url_for('index') }}" class="nav-link active">Home</a>
+      <a href="{{ url_for('predict') }}" class="nav-link">Predict</a>
+      <a href="{{ url_for('login') }}" class="nav-link">Login</a>
+    </div>
+    <a href="{{ url_for('predict') }}" class="nav-btn">Start Predicting →</a>
+  </nav>
+
+  <!-- Hero -->
+  <div class="page-wrapper" style="flex-direction: column; padding-top: 4rem;">
+    <div class="hero-section fade-up">
+
+      <div class="hero-badge">
+        🌱 AI-Powered Agriculture
+      </div>
+
+      <h1 class="hero-title">
+        Predict Your <span>Crop Yield</span><br>with Precision
+      </h1>
+
+      <p class="hero-desc">
+        Harness the power of machine learning to forecast crop production based on
+        climate data, soil conditions, and historical trends — empowering smarter
+        farming decisions across India.
+      </p>
+
+      <div class="hero-cta">
+        <a href="{{ url_for('predict') }}" class="btn-hero-primary">🔬 Make a Prediction</a>
+        <a href="{{ url_for('signup') }}" class="btn-hero-outline">Create Free Account</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-value">80+</span>
+          <div class="stat-label">Crop Types</div>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">ML</span>
+          <div class="stat-label">Powered Model</div>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">Real</span>
+          <div class="stat-label">Time Results</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature Cards -->
+    <div class="features-grid fade-up delay-2">
+      <div class="feature-card">
+        <div class="feature-icon">🌡️</div>
+        <div class="feature-title">Climate Analysis</div>
+        <div class="feature-desc">Input temperature, humidity & soil moisture for accurate yield predictions.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <div class="feature-title">AI Prediction</div>
+        <div class="feature-desc">XGBoost & deep neural network models trained on real Indian crop data.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🧪</div>
+        <div class="feature-title">Fertilizer Advice</div>
+        <div class="feature-desc">Get tailored fertilizer recommendations for every crop and condition.</div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="agri-footer">
+    © 2026 AgriPredict — Empowering Farmers with Data Science &nbsp;·&nbsp; Built with 🌾 & Python
+  </footer>
+
+</body>
+</html>

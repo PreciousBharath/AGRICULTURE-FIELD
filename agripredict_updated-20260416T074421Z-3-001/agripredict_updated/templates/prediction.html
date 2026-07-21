@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crop Prediction — AgriPredict</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/agri.css') }}">
+</head>
+<body>
+
+  <div class="bg-canvas"></div>
+
+  <!-- Navbar -->
+  <nav class="agri-nav">
+    <a href="{{ url_for('index') }}" class="nav-brand">
+      <div class="nav-brand-icon">🌾</div>
+      <span class="nav-brand-text">AgriPredict</span>
+    </a>
+    <div class="nav-links">
+      <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+      <a href="{{ url_for('predict') }}" class="nav-link active">Predict</a>
+      <a href="{{ url_for('login') }}" class="nav-link">Login</a>
+    </div>
+    <a href="{{ url_for('signup') }}" class="nav-btn">Sign Up Free</a>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="agri-card fade-up" style="max-width: 680px;">
+
+      <div class="card-header-agri">
+        <div class="card-icon">🌾</div>
+        <h1 class="card-title">Crop Yield Predictor</h1>
+        <p class="card-subtitle">Enter your field parameters to get an AI-powered production forecast</p>
+      </div>
+
+      <div class="agri-divider"></div>
+
+      <form method="POST" action="{{ url_for('predict') }}">
+
+        <!-- Row 1: Year + Crop -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+
+          <div class="form-group">
+            <label class="form-label" for="crop_year">📅 Crop Year</label>
+            <div class="input-group">
+              <span class="input-icon">📅</span>
+              <input type="number" class="form-control" id="crop_year" name="crop_year"
+                     placeholder="e.g., 2026" min="1990" max="2100" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="crop">🌿 Select Crop</label>
+            <select class="form-control" id="crop" name="crop" required>
+              <option value="">— Choose a Crop —</option>
+              <option value="0">Arecanut</option>
+              <option value="1">Other Kharif pulses</option>
+              <option value="2">Rice</option>
+              <option value="3">Banana</option>
+              <option value="4">Cashewnut</option>
+              <option value="5">Coconut</option>
+              <option value="6">Dry ginger</option>
+              <option value="7">Sugarcane</option>
+              <option value="8">Sweet potato</option>
+              <option value="9">Tapioca</option>
+              <option value="10">Black pepper</option>
+              <option value="11">Dry chillies</option>
+              <option value="12">Other oilseeds</option>
+              <option value="13">Turmeric</option>
+              <option value="14">Maize</option>
+              <option value="15">Moong (Green Gram)</option>
+              <option value="16">Urad</option>
+              <option value="17">Arhar/Tur</option>
+              <option value="18">Groundnut</option>
+              <option value="19">Sunflower</option>
+              <option value="20">Bajra</option>
+              <option value="21">Castor seed</option>
+              <option value="22">Cotton (lint)</option>
+              <option value="23">Horse-gram</option>
+              <option value="24">Jowar</option>
+              <option value="25">Korra</option>
+              <option value="26">Ragi</option>
+              <option value="27">Tobacco</option>
+              <option value="28">Gram</option>
+              <option value="29">Wheat</option>
+              <option value="30">Masoor</option>
+              <option value="31">Sesamum</option>
+              <option value="32">Linseed</option>
+              <option value="33">Safflower</option>
+              <option value="34">Onion</option>
+              <option value="35">Other misc. pulses</option>
+              <option value="36">Samai</option>
+              <option value="37">Small millets</option>
+              <option value="38">Coriander</option>
+              <option value="39">Potato</option>
+              <option value="40">Other Rabi pulses</option>
+              <option value="41">Soyabean</option>
+              <option value="42">Beans &amp; Mutter (Vegetable)</option>
+              <option value="43">Bhindi</option>
+              <option value="44">Brinjal</option>
+              <option value="45">Citrus Fruit</option>
+              <option value="46">Cucumber</option>
+              <option value="47">Grapes</option>
+              <option value="48">Mango</option>
+              <option value="49">Orange</option>
+              <option value="50">Other fibres</option>
+              <option value="51">Other Fresh Fruits</option>
+              <option value="52">Other Vegetables</option>
+              <option value="53">Papaya</option>
+              <option value="54">Pome Fruit</option>
+              <option value="55">Tomato</option>
+              <option value="56">Mesta</option>
+              <option value="57">Cowpea (Lobia)</option>
+              <option value="58">Lemon</option>
+              <option value="59">Pome Granet</option>
+              <option value="60">Sapota</option>
+              <option value="61">Cabbage</option>
+              <option value="62">Rapeseed &amp; Mustard</option>
+              <option value="63">Peas (Vegetable)</option>
+              <option value="64">Niger seed</option>
+              <option value="65">Bottle Gourd</option>
+              <option value="66">Varagu</option>
+              <option value="67">Garlic</option>
+              <option value="68">Ginger</option>
+              <option value="69">Oilseeds total</option>
+              <option value="70">Pulses total</option>
+              <option value="71">Jute</option>
+              <option value="72">Peas &amp; beans (Pulses)</option>
+              <option value="73">Blackgram</option>
+              <option value="74">Paddy</option>
+              <option value="75">Pineapple</option>
+              <option value="76">Barley</option>
+              <option value="77">Sannhamp</option>
+              <option value="78">Khesari</option>
+              <option value="79">Guar seed</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Row 2: Temperature + Humidity -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label" for="temperature">🌡️ Temperature (°C)</label>
+            <div class="input-group">
+              <span class="input-icon">🌡️</span>
+              <input type="number" step="0.01" class="form-control" id="temperature"
+                     name="temperature" placeholder="e.g., 28.5" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="humidity">💧 Humidity (%)</label>
+            <div class="input-group">
+              <span class="input-icon">💧</span>
+              <input type="number" step="0.01" class="form-control" id="humidity"
+                     name="humidity" placeholder="e.g., 65.0" min="0" max="100" required>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 3: Soil Moisture + Area -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label" for="soil_moisture">🌍 Soil Moisture (%)</label>
+            <div class="input-group">
+              <span class="input-icon">🌍</span>
+              <input type="number" step="0.01" class="form-control" id="soil_moisture"
+                     name="soil_moisture" placeholder="e.g., 45.0" min="0" max="100" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="area">📐 Area (hectares)</label>
+            <div class="input-group">
+              <span class="input-icon">📐</span>
+              <input type="number" step="0.01" class="form-control" id="area"
+                     name="area" placeholder="e.g., 5.0" min="0.01" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="agri-divider"></div>
+
+        <button type="submit" class="btn-agri-primary">
+          🔬 Predict Crop Production
+        </button>
+
+      </form>
+
+      <p class="auth-switch" style="margin-top: 1rem;">
+        <a href="{{ url_for('index') }}">← Back to Home</a>
+      </p>
+    </div>
+  </div>
+
+  <footer class="agri-footer">
+    © 2026 AgriPredict — AI-Powered Agriculture Intelligence
+  </footer>
+
+  <script>
+    // Animate card on load
+    document.querySelector('.agri-card').style.opacity = '0';
+    document.querySelector('.agri-card').style.transform = 'translateY(24px)';
+    setTimeout(() => {
+      document.querySelector('.agri-card').style.transition = 'all 0.55s ease';
+      document.querySelector('.agri-card').style.opacity = '1';
+      document.querySelector('.agri-card').style.transform = 'translateY(0)';
+    }, 80);
+  </script>
+</body>
+</html>
